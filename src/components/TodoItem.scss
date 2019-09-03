@@ -1,0 +1,47 @@
+.cp-todo-item{
+  width: 444px;
+  padding: 18px 20px 18px 0;
+  position: relative;
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  list-style: none;
+  text-align: left;
+  &:last-child {
+    border-bottom: none;
+  }
+  &:hover {
+    .destroy-button{
+      display: block;
+    }
+  }
+  .todo-item-dis-border {
+    border-bottom: none;
+    padding: 8px 20px 8px 0;
+    width: 444px;
+    position: relative;
+    font-size: 24px;
+    list-style: none;
+    text-align: left;
+  }
+  .line-through{
+    color: #777777;
+    text-decoration: line-through;
+  }
+  .destroy-button{
+    position: absolute;
+    right: 5px;
+    top: 20px;
+    display: none;
+    background-position: 0 -20px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: url(../static/close-circle.png) no-repeat;
+  }
+  .edit-input {
+    display: block;
+    width:444px;
+    height:50px;
+    font-size: 24px;
+  }
+}
