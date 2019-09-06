@@ -3,6 +3,7 @@ import './todoItem.scss'
 
 export default class TodoItem extends Component {
   // componentWillReceiveProps
+  // componentWillUpdate
   componentDidUpdate() {
     if(this.props.item.edit){
       this.refs.inp.focus()

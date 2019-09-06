@@ -17,6 +17,13 @@ export default class TodoList extends Component {
     this.handlerDeleteAll = this.handlerDeleteAll.bind(this)
     this.handlerSetState = this.handlerSetState.bind(this)
   }
+  componentWillMount() {
+    let storage = JSON.parse(localStorage.getItem('todos-react') || '[]')
+    this.handlerSetState(storage)
+  }
+  componentDidUpdate() {
+    localStorage.setItem('todos-react',JSON.stringify(this.state.todoList))
+  }
   handlerOnchange(e) {
     this.setState({
       newTodo: e.target.value
@@ -111,12 +118,14 @@ export default class TodoList extends Component {
     if(type !== 'add') {
       newTodo = this.state.newTodo
     }
-    this.setState({
-      todoList: list,
-      isAllChecked: list.findIndex(x => x.done === false) === -1 ? true:false,
-      numDone: list.filter(x => x.done === true).length,
-      newTodo: newTodo
-    })
+    if(list) {
+      this.setState({
+        todoList: list,
+        isAllChecked: list.findIndex(x => x.done === false) === -1 ? true:false,
+        numDone: list.filter(x => x.done === true).length,
+        newTodo: newTodo
+      })
+    }
   }
   render() {
     let { newTodo, isAllChecked, numDone, todoList} = this.state
